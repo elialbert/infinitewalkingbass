@@ -69,7 +69,7 @@ function generateNotes() {
       play = true;
     }
     let randd = Math.random();
-    if (randd < 0.45 && randd > 0.4) {
+    if (randd < 0.45 && randd > 0.35) {
       notes.push({note: Tonal.transpose(note + '2', '-8m'), length: '32n', play: play})
     } else {
       notes.push({note: note + '2', length: '32n', play: play})
@@ -78,7 +78,7 @@ function generateNotes() {
     notes.push({note: null, length: null, play: false})
     
     // little grace note
-    if (randd > 0.85) {
+    if (randd > 0.76) {
       notes.push({note: Tonal.transpose(note + '2', '-8m'), length: '64n', play: true}) 
     } else if (randd < .05) {
       notes.push({note: Tonal.transpose(note + '2', '5m'), length: '64n', play: true}) 
