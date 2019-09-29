@@ -7,7 +7,7 @@ function generateScale() {
     notes.push({note: note, length: '32n', play: true})
     notes.push({note: null, length: null, play: false}) 
     notes.push({note: null, length: null, play: false}) 
-    notes.push({note: null, length: null, play: false}) 
+    notes.push({note: note, length: '64n', play: true}) 
   })
   console.log(notes)
   return notes

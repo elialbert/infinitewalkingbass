@@ -5,8 +5,6 @@ let notes = generateScale()
 var numberOfSteps = 32;
 
 let nextNotes = null
-console.log('starting', notes)
-
 
 let loopFunc = function(time) {
   if (!nextNotes) {
@@ -15,7 +13,7 @@ let loopFunc = function(time) {
   }
 
   let note = notes[stepNumber]
-  console.log(note)
+  // console.log(note)
   if (note.play) {
     bass.triggerAttackRelease(note.note,
                               note.interval,
@@ -30,4 +28,3 @@ let loopFunc = function(time) {
     console.log('looping')
   }
 }
-    
