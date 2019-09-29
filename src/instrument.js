@@ -1,14 +1,35 @@
-// Bassline
-var bassline = new Tone.FMSynth();
-var basslineVolume = new Tone.Volume(0);
-var basslineDistortion = new Tone.Distortion(10);
-var basslineDelay = new Tone.FeedbackDelay(50); 
-var basslinePhaser = new Tone.Phaser({
-  "frequency" : 125, 
-  "depth" : 1.5, 
-  "baseFrequency" : 50
+var bass = new Tone.MonoSynth({
+  volume: -5,
+  frequency: 'C2',
+  oscillator: {
+    type: 'square4'
+  },
+  envelope: {
+    attack: 0.005,
+    decay: 0.991,
+    sustain: 0.001,
+    release: .001
+  }
 })
-bassline.chain(basslineDistortion, basslineDelay);
-bassline.chain(basslineDistortion, basslinePhaser);
-bassline.chain(basslinePhaser, basslineVolume);
-bassline.chain(basslineVolume, Tone.Master);
+var filter = new Tone.AutoFilter({
+  wet: 1,
+  frequency: 200,
+  type: 'sine',
+  depth: 1,
+  baseFrequency: 200,
+  octaves: 6,
+  filter: {
+    type: 'lowpass',
+    rolloff: -12,
+    Q: 1
+  }
+}) 
+
+var tremelo = new Tone.Tremolo({
+  frequency: 100,
+  type: 'sine',
+  depth: 1,
+  spread: 15,
+  wet: 0
+}) 
+bass.chain(filter, tremelo, Tone.Master);
