@@ -13,11 +13,15 @@ let loopFunc = function(time) {
   }
 
   let note = notes[stepNumber]
-  if (note.play) {
-    bass.triggerAttackRelease(note.note,
-                              note.interval,
-                              time);
-  } else if (note.pause) {
+  try {
+    if (note.play) {
+      bass.triggerAttackRelease(note.note,
+                                note.interval,
+                                time);
+    } else if (note.pause) {
+      bass.triggerRelease();
+    }
+  } catch(e) {
     bass.triggerRelease();
   }
 

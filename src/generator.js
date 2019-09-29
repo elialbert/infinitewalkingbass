@@ -1,19 +1,25 @@
 let allScaleTypes = ["bebop", "bebop dominant", "bebop locrian", "bebop major", "bebop minor", "composite blues", "minor bebop"]
-let keyNote = 'G';
+let keys = ['C', 'G', 'D', 'A', 'E', 'B']
+let keyNote = 'C';
 let modifier; let key; let chordsToUse;
 let keyCounter = 0;
 let keyTypeCounter = 0;
+let keyIndex = 0;
 
 function changeKey() {
   keyTypeCounter += 1;
   keyCounter += 1;
-  if (keyTypeCounter > 16) {
+  if (keyTypeCounter > 8) {
     keyTypeCounter = 0;
     changeKeyType();
   } else {
     if (keyCounter > 4) {
-      keyNote = Tonal.transpose(keyNote, '5m');
+      keyNote = keys[keyIndex]
       keyCounter = 0;
+      keyIndex += 1;
+      if (keyIndex == keys.length) {
+        keyIndex = 0;
+      }
     }
   }
   key = keyNote + ' ' + modifier;
@@ -57,6 +63,7 @@ function generateNotes() {
   for (i=0; i < 8; i++) {
     let note = notesToUse[i]
     if (note.indexOf('##') > -1) {
+      note = note.
       play = false;
     } else {
       play = true;
