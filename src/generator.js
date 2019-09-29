@@ -9,7 +9,7 @@ let keyIndex = 0;
 function changeKey() {
   keyTypeCounter += 1;
   keyCounter += 1;
-  if (keyTypeCounter > 8) {
+  if (keyTypeCounter > 16) {
     keyTypeCounter = 0;
     changeKeyType();
   } else {
