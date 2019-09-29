@@ -1,5 +1,5 @@
 var bass = new Tone.MonoSynth({
-  volume: -5,
+  volume: 0,
   frequency: 'C2',
   oscillator: {
     type: 'square4'
@@ -32,4 +32,4 @@ var tremelo = new Tone.Tremolo({
   spread: 15,
   wet: 0
 }) 
-bass.chain(filter, tremelo, Tone.Master);
+bass.chain(tremelo, Tone.Master);

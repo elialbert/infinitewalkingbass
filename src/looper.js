@@ -1,23 +1,24 @@
 var stepNumber = 0;
-Tone.Transport.bpm.value = 80;
+Tone.Transport.bpm.value = 70;
 
-let notes = generateScale()
+let notes = generateNotes()
 var numberOfSteps = 32;
 
 let nextNotes = null
 
 let loopFunc = function(time) {
   if (!nextNotes) {
-    nextNotes = generateScale()  
-    console.log('generated', nextNotes)
+    // can push to web worker?!:
+    nextNotes = generateNotes();
   }
 
   let note = notes[stepNumber]
-  // console.log(note)
   if (note.play) {
     bass.triggerAttackRelease(note.note,
                               note.interval,
                               time);
+  } else if (note.pause) {
+    bass.triggerRelease();
   }
 
   stepNumber++;
@@ -25,6 +26,6 @@ let loopFunc = function(time) {
     notes = nextNotes;
     nextNotes = null;
     stepNumber = 0
-    console.log('looping')
+    // console.log('looping')
   }
 }
