@@ -1,6 +1,6 @@
 var stepNumber = 0;
 Tone.Transport.bpm.value = 70;
-// Tone.Transport.swing.value = 0.24;
+Tone.Transport.swing.value = 0.24;
 
 let notes = generateNotes()
 var numberOfSteps = 32;
