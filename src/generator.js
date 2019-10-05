@@ -5,6 +5,7 @@ let modifier; let key; let chordsToUse;
 let keyCounter = 0;
 let keyTypeCounter = 0;
 let keyIndex = 0;
+var showInfo = false;
 
 function changeKey() {
   keyTypeCounter += 1;
@@ -23,7 +24,10 @@ function changeKey() {
     }
   }
   key = keyNote + ' ' + modifier;
-  console.log('key is ', key)
+  // console.log('key is ', key)
+  if (showInfo) {
+    document.getElementById('current-key').innerHTML = key;
+  }
   chordsToUse = Tonal.Scale.chords(key).filter(function(x) { return x !== '5' && x !== '64' && x !== '4'});;
 }
 
@@ -59,6 +63,11 @@ function pickChords() {
 let numNotes = 0;
 let numNotesToUse = 0;
 
+function getNoteToUse(ind) {
+  let adjInd = ind % notesToUse.length
+  return notesToUse[adjInd]
+}
+
 function generateNotes() {
   numNotes = 0;
   const play = true;
@@ -67,24 +76,24 @@ function generateNotes() {
   useIndex = 0;
   // console.log('got notes to use', notesToUse)
   let notes = [];
+  // console.log(p1, p2, p3, p4)
   for (i=0; i < 8; i++) {
-    let randd = Math.random();
-    let note = notesToUse[useIndex]
+    let note = getNoteToUse(useIndex)
     let subNotes = [];
-    if (randd < 0.65) {
+    if (Math.random() < p1) {
       notes.push(note + '2')
       numNotes += 1;
     } else {
       // subnotes
-      if (randd < 0.8) {
+      if (Math.random() < p2) {
         subNotes = [note + '2', null, null, Tonal.transpose(note + '2', '-8m')]
         numNotes += 2;
-      } else if (randd < 0.9) {
+      } else if (Math.random() < p3) {
         subNotes = [note + '2', null, null, Tonal.transpose(note + '2', '5m')]
         numNotes += 2;
-      } else {
+      } else if (Math.random() < p4) {
         // triplet
-        subNotes = [note + '2', notesToUse[i+1] + '2', notesToUse[i+2] + '2']
+        subNotes = [note + '2', getNoteToUse(i+1) + '2', getNoteToUse(i+2) + '2']
         useIndex = useIndex + 2;
         numNotes += 3;
       }
@@ -93,7 +102,7 @@ function generateNotes() {
     }
     useIndex += 1;
   }
-  console.log('made', numNotes, notes)
+  // console.log('made', numNotes, notes)
   if (numNotesToUse == 0) {
     numNotesToUse = numNotes;
   }

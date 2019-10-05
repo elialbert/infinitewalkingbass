@@ -11,13 +11,13 @@
 
 <body class='background'>
   <div class="jumbotron jumbotron-fluid">
-    <div class='container padding-bottom-small padding-top-small'>
+    <div class='container pb-1 pt-1'>
       <h1 class="display-4 text-center header-title">
         Infinite Walking Bass Generator
       </h1>
     </div>
   </div>
-  <div class='container padding-bottom-small padding-top-large main-container'>
+  <div class='container pb-1 pt-2 main-container'>
     <div class='row'>
       <div class='col-12 text-center'>
         <button type="button" class="btn btn-info btn-lg" data-toggle="button"
@@ -26,6 +26,48 @@
     </div>
   </div>
   
+  <div class='container mt-1'>
+    <div class='row'>
+      <div class='col-12'>
+        <input type="checkbox" name="show-playing" id='show-playing'>
+        <label for="show-playing">Show extra info</label>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-12 text-center' id='current-key'>
+      </div>
+      <div class='col-12 text-center' id='currently-playing'>
+      </div>
+    </div>
+    <div class='row mt-1'>
+      <div class='col-12'>
+        Eighth Notes:
+      </div>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="80" class="slider" id="p1Range">
+      </div>
+      <div class='col-12'>
+        Grace note down:
+      </div>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="40" class="slider" id="p3Range">
+      </div>
+      <div class='col-12'>
+        Grace note up:
+      </div>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="20" class="slider" id="p2Range">
+      </div>
+      <div class='col-12'>
+        Triplets:
+      </div>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="10" class="slider" id="p4Range">
+      </div>
+    </div>
+  </div>
+  
+
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -36,6 +78,7 @@
   <script src='lib/startaudiocontext.js' type='text/javascript'></script>
   <script src='src/instrument.js' type='text/javascript'></script>
   <script src='src/utils.js' type='text/javascript'></script>
+  <script src='src/customization.js' type='text/javascript'></script>
   <script src='src/generator.js' type='text/javascript'></script>
   <script src='src/looper.js' type='text/javascript'></script>
   <script src='src/main.js' type='text/javascript'></script>
