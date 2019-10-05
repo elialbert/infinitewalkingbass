@@ -11,8 +11,7 @@ playPauseButton.addEventListener("click", function() {
 
   } else {
     console.log('starting'); playing = true; playPauseButton.innerHTML = "Pause";
-    if (!loop) { loop = new Tone.Loop(loopFunc, "32n"); }
-    loop.humanize = '0.005s';
+    loop = new Tone.Sequence(loopFunc, notes, "8n");
     loop.start();
     StartAudioContext(Tone.context);
     Tone.Transport.start();  

@@ -1,0 +1,19 @@
+@media screen and (min-width: 576px) {
+  .header-title {
+    font-size: 60px;
+  }
+
+  #play-pause {
+    
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .header-title {
+    font-size: 24px;
+  }
+
+  #play-pause {
+    
+  }
+}
